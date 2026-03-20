@@ -1,0 +1,10 @@
+INSERT INTO admins (email, password, company) VALUES
+    ('admin1@test.com', 'abcd', '회사A');
+INSERT INTO products (name, description, image_url, price) VALUES
+    ('타임딜 상품1', '설명1', 'image_url_1', '10000');
+INSERT INTO promotions (admin_id, product_id, sale_price, discount_rate, start_time, end_time, total_quantity, sold_quantity, promotion_status) VALUES
+    (1, 1, 8000, 0.2, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY), 100, 0, 'ACTIVE');
+INSERT INTO orders (user_id, total_amount, order_status) VALUES
+    (7, 16000, 'DONE');
+INSERT INTO order_details (order_id, promotion_id, quantity, unit_price, subtotal) VALUES
+    (1, 1, 2, 8000, 16000);

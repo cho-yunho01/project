@@ -1,0 +1,96 @@
+    @Operation(summary = "로그아웃", description = "로그인 id를 받아 로그아웃")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "로그아웃 성공"),
+            @ApiResponse(responseCode = "404", description = "해당 유저를 찾을 수 없음")
+    })
+    @PostMapping("/users/signOut")
+    public ApiResult<Void> signOut(@AuthenticationPrincipal String userId)){
+        userService.signOut(Long.parseLong(userId));
+        return ApiResult.success();
+    }
+
+    public void logout(Long userId) {
+
+        redisTemplate.delete("LOGIN:" + userId);
+    }
+
+    public SignInResponse signIn(String email, String password) {
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new CoreException(ErrorType.DEFAULT_ERROR));
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new CoreException(ErrorType.USER_NOT_FOUND);
+        }
+
+        String accessToken = jwtTokenProvider.createToken(
+                user.getEmail(),
+                "USER",
+                user.getId()
+        );
+
+        redisTemplate.opsForValue().set(
+                "LOGIN:" + user.getId(),
+                accessToken,
+                jwtTokenProvider.getExpiration(),
+                TimeUnit.MILLISECONDS
+        );
+
+        return new SignInResponse(user.getId(), accessToken);
+    }
+
+    
+    
+    @Component
+    @RequiredArgsConstructor
+    public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
+
+        private final GatewayJwtTokenProvider jwtTokenProvider;
+        private final StringRedisTemplate redisTemplate;
+
+        @Override
+        public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+            String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
+
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return chain.filter(exchange);
+            }
+
+            String token = authHeader.substring(7);
+
+
+            if (!jwtTokenProvider.validateToken(token)) {
+                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                return exchange.getResponse().setComplete();
+            }
+
+
+            Long userId = jwtTokenProvider.getUserIdFromJWT(token);
+            String role = jwtTokenProvider.getRoleFromJWT(token);
+
+
+            String savedToken = redisTemplate.opsForValue().get("LOGIN:" + userId);
+
+            if (savedToken == null || !savedToken.equals(token)) {
+                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                return exchange.getResponse().setComplete();
+            }
+
+
+            ServerHttpRequest mutateRequest = exchange.getRequest().mutate()
+                    .header("X-User-Id", String.valueOf(userId))
+                    .header("X-User-Role", role)
+                    .build();
+
+            ServerWebExchange mutatedExchange =
+                    exchange.mutate().request(mutateRequest).build();
+
+            return chain.filter(mutatedExchange);
+        }
+
+        @Override
+        public int getOrder() {
+            return -1;
+        }
+    }

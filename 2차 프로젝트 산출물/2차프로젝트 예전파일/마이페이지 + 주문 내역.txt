@@ -1,0 +1,25 @@
+     1. 마이페이지 + 주문 내역
+    public MyPageResponse getMyPage(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new CoreException(ErrorType.DEFAULT_ERROR));
+        List<Order> orders = orderRepository.findByUserId(userId);
+        List<MyPageOrderResponse> myPageOrders = new ArrayList<>();
+        for (Order order : orders) {
+            List<OrderDetail> details = orderDetailRepository.findByOrderId(order.getId());
+            for (OrderDetail detail : details) {
+                // 예: promotionId로 Promotion 정보 조회 (상품명/이미지 가져오는 용도)
+                Promotion promotion = promotionRepository.findById(detail.getPromotionId())
+                        .orElseThrow(() -> new CoreException(ErrorType.DEFAULT_ERROR));
+                MyPageOrderResponse response = new MyPageOrderResponse(
+                        order.getId(),
+                        "",//promotion.getImageUrl(),
+                        "", //promotion.getName(),
+                        detail.getQuantity(),
+                        detail.getSubtotal(),
+                        order.getCreatedAt()
+                );
+                myPageOrders.add(response);
+            }
+        }
+        return new MyPageResponse(user, myPageOrders);
+    }

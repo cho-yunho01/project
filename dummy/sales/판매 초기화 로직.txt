@@ -1,0 +1,9 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE sales_item;
+TRUNCATE TABLE sales;
+TRUNCATE TABLE franchise_inventory;
+TRUNCATE TABLE franchise_order_item;
+TRUNCATE TABLE franchise_order;
+
+SET FOREIGN_KEY_CHECKS = 1;

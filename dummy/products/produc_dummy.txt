@@ -1,0 +1,211 @@
+INSERT INTO product_type (product_type, name) VALUES
+    ('OR', '오리지널'),   -- product_type_id=1
+    ('RO', '로제'),       -- product_type_id=2
+    ('MA', '마라');        -- product_type_id=3
+
+
+INSERT INTO component (name, created_at, updated_at) VALUES
+    ('떡',             NOW(), NOW()),   -- component_id=1
+    ('오리지널 소스',  NOW(), NOW()),   -- component_id=2
+    ('로제 소스',      NOW(), NOW()),   -- component_id=3
+    ('마라 소스',      NOW(), NOW()),   -- component_id=4
+    ('어묵',           NOW(), NOW()),   -- component_id=5
+    ('모짜렐라 치즈',  NOW(), NOW()),   -- component_id=6
+    ('건파',           NOW(), NOW());   -- component_id=7
+
+
+
+
+
+INSERT INTO product
+    (product_code, name, description, product_type_id, image_url,
+     price, cost_price, supply_price, status,
+     kcal, weight, supply_price_start_date, supply_price_end_date,
+     created_at, updated_at)
+VALUES
+    -- ── 오리지널 1,2인분 (product_id=1~4) ──
+    ('OR0101', '오리지널 떡볶이 밀키트 순한맛 1,2인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0101.jpg',
+     10000, 4500, 7000, 'ON_SALE', 450, 400,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 1
+
+    ('OR0201', '오리지널 떡볶이 밀키트 기본맛 1,2인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0201.jpg',
+     10000, 4500, 7000, 'ON_SALE', 450, 400,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 2
+
+    ('OR0301', '오리지널 떡볶이 밀키트 매운맛 1,2인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0301.jpg',
+     10000, 4500, 7000, 'ON_SALE', 450, 400,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 3
+
+    ('OR0401', '오리지널 떡볶이 밀키트 아주매운맛 1,2인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0401.jpg',
+     10000, 4500, 7000, 'ON_SALE', 450, 400,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 4
+
+    -- ── 오리지널 3,4인분 (product_id=5~8) ──
+    ('OR0103', '오리지널 떡볶이 밀키트 순한맛 3,4인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0103.jpg',
+     18000, 8100, 12600, 'ON_SALE', 810, 720,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 5
+
+    ('OR0203', '오리지널 떡볶이 밀키트 기본맛 3,4인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0203.jpg',
+     18000, 8100, 12600, 'ON_SALE', 810, 720,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 6
+
+    ('OR0303', '오리지널 떡볶이 밀키트 매운맛 3,4인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0303.jpg',
+     18000, 8100, 12600, 'ON_SALE', 810, 720,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 7
+
+    ('OR0403', '오리지널 떡볶이 밀키트 아주매운맛 3,4인분',
+     '간장 베이스의 정통 떡볶이 밀키트', 1,
+     'https://img.chaing.com/or0403.jpg',
+     18000, 8100, 12600, 'ON_SALE', 810, 720,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 8
+
+    -- ── 로제 1,2인분 (product_id=9~12) ──
+    ('RO0101', '로제 떡볶이 밀키트 순한맛 1,2인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0101.jpg',
+     12000, 5400, 8400, 'ON_SALE', 520, 430,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 9
+
+    ('RO0201', '로제 떡볶이 밀키트 기본맛 1,2인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0201.jpg',
+     12000, 5400, 8400, 'ON_SALE', 520, 430,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 10
+
+    ('RO0301', '로제 떡볶이 밀키트 매운맛 1,2인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0301.jpg',
+     12000, 5400, 8400, 'ON_SALE', 520, 430,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 11
+
+    ('RO0401', '로제 떡볶이 밀키트 아주매운맛 1,2인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0401.jpg',
+     12000, 5400, 8400, 'ON_SALE', 520, 430,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 12
+
+    -- ── 로제 3,4인분 (product_id=13~16) ──
+    ('RO0103', '로제 떡볶이 밀키트 순한맛 3,4인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0103.jpg',
+     22000, 9900, 15400, 'ON_SALE', 940, 770,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 13
+
+    ('RO0203', '로제 떡볶이 밀키트 기본맛 3,4인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0203.jpg',
+     22000, 9900, 15400, 'ON_SALE', 940, 770,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 14
+
+    ('RO0303', '로제 떡볶이 밀키트 매운맛 3,4인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0303.jpg',
+     22000, 9900, 15400, 'ON_SALE', 940, 770,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 15
+
+    ('RO0403', '로제 떡볶이 밀키트 아주매운맛 3,4인분',
+     '크리미한 로제 소스의 떡볶이 밀키트', 2,
+     'https://img.chaing.com/ro0403.jpg',
+     22000, 9900, 15400, 'ON_SALE', 940, 770,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 16
+
+    -- ── 마라 1,2인분 (product_id=17~20) ──
+    ('MA0101', '마라 떡볶이 밀키트 순한맛 1,2인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0101.jpg',
+     12000, 5400, 8400, 'ON_SALE', 490, 420,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 17
+
+    ('MA0201', '마라 떡볶이 밀키트 기본맛 1,2인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0201.jpg',
+     12000, 5400, 8400, 'ON_SALE', 490, 420,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 18
+
+    ('MA0301', '마라 떡볶이 밀키트 매운맛 1,2인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0301.jpg',
+     12000, 5400, 8400, 'ON_SALE', 490, 420,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 19
+
+    ('MA0401', '마라 떡볶이 밀키트 아주매운맛 1,2인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0401.jpg',
+     12000, 5400, 8400, 'ON_SALE', 490, 420,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 20
+
+    -- ── 마라 3,4인분 (product_id=21~24) ──
+    ('MA0103', '마라 떡볶이 밀키트 순한맛 3,4인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0103.jpg',
+     22000, 9900, 15400, 'ON_SALE', 880, 750,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 21
+
+    ('MA0203', '마라 떡볶이 밀키트 기본맛 3,4인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0203.jpg',
+     22000, 9900, 15400, 'ON_SALE', 880, 750,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 22
+
+    ('MA0303', '마라 떡볶이 밀키트 매운맛 3,4인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0303.jpg',
+     22000, 9900, 15400, 'ON_SALE', 880, 750,
+     '2026-01-01', '2026-12-31', NOW(), NOW()),   -- 23
+
+    ('MA0403', '마라 떡볶이 밀키트 아주매운맛 3,4인분',
+     '얼얼한 마라 소스의 떡볶이 밀키트', 3,
+     'https://img.chaing.com/ma0403.jpg',
+     22000, 9900, 15400, 'ON_SALE', 880, 750,
+     '2026-01-01', '2026-12-31', NOW(), NOW());   -- 24
+
+
+
+-- 오리지널 8종 (product_id 1~8) × 4 구성품 = 32행
+INSERT INTO product_component (product_id, component_id, created_at, updated_at) VALUES
+    (1,1,NOW(),NOW()),(1,2,NOW(),NOW()),(1,5,NOW(),NOW()),(1,7,NOW(),NOW()),
+    (2,1,NOW(),NOW()),(2,2,NOW(),NOW()),(2,5,NOW(),NOW()),(2,7,NOW(),NOW()),
+    (3,1,NOW(),NOW()),(3,2,NOW(),NOW()),(3,5,NOW(),NOW()),(3,7,NOW(),NOW()),
+    (4,1,NOW(),NOW()),(4,2,NOW(),NOW()),(4,5,NOW(),NOW()),(4,7,NOW(),NOW()),
+    (5,1,NOW(),NOW()),(5,2,NOW(),NOW()),(5,5,NOW(),NOW()),(5,7,NOW(),NOW()),
+    (6,1,NOW(),NOW()),(6,2,NOW(),NOW()),(6,5,NOW(),NOW()),(6,7,NOW(),NOW()),
+    (7,1,NOW(),NOW()),(7,2,NOW(),NOW()),(7,5,NOW(),NOW()),(7,7,NOW(),NOW()),
+    (8,1,NOW(),NOW()),(8,2,NOW(),NOW()),(8,5,NOW(),NOW()),(8,7,NOW(),NOW());
+
+-- 로제 8종 (product_id 9~16) × 5 구성품 = 40행
+INSERT INTO product_component (product_id, component_id, created_at, updated_at) VALUES
+    (9,1,NOW(),NOW()),(9,3,NOW(),NOW()),(9,5,NOW(),NOW()),(9,6,NOW(),NOW()),(9,7,NOW(),NOW()),
+    (10,1,NOW(),NOW()),(10,3,NOW(),NOW()),(10,5,NOW(),NOW()),(10,6,NOW(),NOW()),(10,7,NOW(),NOW()),
+    (11,1,NOW(),NOW()),(11,3,NOW(),NOW()),(11,5,NOW(),NOW()),(11,6,NOW(),NOW()),(11,7,NOW(),NOW()),
+    (12,1,NOW(),NOW()),(12,3,NOW(),NOW()),(12,5,NOW(),NOW()),(12,6,NOW(),NOW()),(12,7,NOW(),NOW()),
+    (13,1,NOW(),NOW()),(13,3,NOW(),NOW()),(13,5,NOW(),NOW()),(13,6,NOW(),NOW()),(13,7,NOW(),NOW()),
+    (14,1,NOW(),NOW()),(14,3,NOW(),NOW()),(14,5,NOW(),NOW()),(14,6,NOW(),NOW()),(14,7,NOW(),NOW()),
+    (15,1,NOW(),NOW()),(15,3,NOW(),NOW()),(15,5,NOW(),NOW()),(15,6,NOW(),NOW()),(15,7,NOW(),NOW()),
+    (16,1,NOW(),NOW()),(16,3,NOW(),NOW()),(16,5,NOW(),NOW()),(16,6,NOW(),NOW()),(16,7,NOW(),NOW());
+
+-- 마라 8종 (product_id 17~24) × 4 구성품 = 32행
+INSERT INTO product_component (product_id, component_id, created_at, updated_at) VALUES
+    (17,1,NOW(),NOW()),(17,4,NOW(),NOW()),(17,5,NOW(),NOW()),(17,7,NOW(),NOW()),
+    (18,1,NOW(),NOW()),(18,4,NOW(),NOW()),(18,5,NOW(),NOW()),(18,7,NOW(),NOW()),
+    (19,1,NOW(),NOW()),(19,4,NOW(),NOW()),(19,5,NOW(),NOW()),(19,7,NOW(),NOW()),
+    (20,1,NOW(),NOW()),(20,4,NOW(),NOW()),(20,5,NOW(),NOW()),(20,7,NOW(),NOW()),
+    (21,1,NOW(),NOW()),(21,4,NOW(),NOW()),(21,5,NOW(),NOW()),(21,7,NOW(),NOW()),
+    (22,1,NOW(),NOW()),(22,4,NOW(),NOW()),(22,5,NOW(),NOW()),(22,7,NOW(),NOW()),
+    (23,1,NOW(),NOW()),(23,4,NOW(),NOW()),(23,5,NOW(),NOW()),(23,7,NOW(),NOW()),
+    (24,1,NOW(),NOW()),(24,4,NOW(),NOW()),(24,5,NOW(),NOW()),(24,7,NOW(),NOW());
+
+

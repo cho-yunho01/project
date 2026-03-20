@@ -1,0 +1,40 @@
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Gradle ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar  # 이 파일은 올라가야 함
+
+### Java ###
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### Mac OS ###
+.DS_Store
+
+### Spring Boot / Application Config ###
+# 민감 정보가 포함된 설정 파일은 제외 (선택 사항)
+# 보통 로컬 개발용이나 비밀번호가 들어간 파일들
+application-secret.yml
+application-prod.yml
+*.env
+
+### Logs ###
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
